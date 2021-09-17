@@ -17,6 +17,7 @@ const employeeController = require('../controllers/employee.controller');
 //#endregion
 
 //#region Office
+
 router.get('/offices', employeeController.findAll);
 //#endregion
 

@@ -19,6 +19,10 @@ const clientRoutes = require('./src/routes/Api/clients')
 
 app.use('/client', clientRoutes)
 
+const officeRoutes = require('./src/routes/Api/offices')
+
+app.use('/office', officeRoutes)
+
 const buildingRoutes = require('./src/routes/Api/buildings')
 
 app.use('/building', buildingRoutes)

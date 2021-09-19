@@ -1,18 +1,18 @@
-const mysql = require("mysql2");
+'use strict';
+
+const mysql = require("mysql");
   
-const connection = mysql.createConnection({
+const dbConn = mysql.createConnection({
   host: "localhost",
   user: "root",
-  database: "Baze",
-  password: ""
+  password: "",
+  database: "Baze"
 }); 
-          SelectAllElements = () =>{
-            return new Promise((resolve, reject)=>{
-                pool.query('SELECT * FROM Baze',  (error, elements)=>{
-                    if(error){
-                        return reject(error);
-                    }
-                    return resolve(elements);
-                });
-            });
-        };
+
+dbConn.connect(function(err) {
+    if (err) throw err;
+    console.log("Database Connected!");
+  });
+  
+  module.exports = dbConn;
+

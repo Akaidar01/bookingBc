@@ -1,16 +1,3 @@
-const express = require('express');
-
-const app = express();
-
-const port = process.env.PORT || 5001;
-
-app.get('/', (req, res) =>{
-    res.send('Baze');
-})
-
-app.listen(port, ()=>{
-    console.log(`Server is runing at port ${port}`);
-});
 
 const express = require('express');
 
@@ -18,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5003;
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -28,9 +15,9 @@ app.get('/', (req, res) => {
   res.send("Baze");
 });
 
-const employeeRoutes = require('./src/routes/employee.routes')
+const employeeRoutes = require('./src/routes/Api/buildings')
 
-app.use('/api/v1/Books', employeeRoutes)
+app.use('/', employeeRoutes)
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

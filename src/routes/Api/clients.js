@@ -4,7 +4,7 @@ const router = express.Router()
 
 const client = require('../../controller/client.controller');
 
-    router.get('/clients', client.findAll);
+    router.get('/', client.findAll);
 
     router.post('/', client.create);
 
@@ -12,6 +12,6 @@ const client = require('../../controller/client.controller');
 
     router.put('/:id', client.update);
 
-    router.delete('/clientsController/:id', client.delete);
+    router.delete('/:id', client.delete);
 
 module.exports = router

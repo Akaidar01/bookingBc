@@ -15,9 +15,13 @@ app.get('/', (req, res) => {
   res.send("Baze");
 });
 
-const employeeRoutes = require('./src/routes/Api/buildings')
+const clientRoutes = require('./src/routes/Api/clients')
 
-app.use('/', employeeRoutes)
+app.use('/client', clientRoutes)
+
+const buildingRoutes = require('./src/routes/Api/buildings')
+
+app.use('/building', buildingRoutes)
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

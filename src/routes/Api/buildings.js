@@ -4,7 +4,7 @@ const router = express.Router()
 
 const building = require('../../controller/building.controller');
 
-    router.get('/building', building.findAll);
+    router.get('/', building.findAll);
 
     router.post('/', building.create);
 
@@ -12,6 +12,6 @@ const building = require('../../controller/building.controller');
 
     router.put('/:id', building.update);
 
-    router.delete('/building/:id', building.delete);
+    router.delete('/:id', building.delete);
 
 module.exports = router

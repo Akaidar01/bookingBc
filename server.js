@@ -1,19 +1,26 @@
 
 const express = require('express');
 
+const cors = require('cors');
+
 const bodyParser = require('body-parser');
 
 const app = express();
 
-const port = process.env.PORT || 5003;
+const port = process.env.PORT || 5001;
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(bodyParser.json())
 
+app.use(cors({
+  origin: '*'
+}));
+
 app.get('/', (req, res) => {
   res.send("Baze");
 });
+
 
 const clientRoutes = require('./src/routes/Api/clients')
 

@@ -1,7 +1,7 @@
 'use strict';
 
 const mysql = require("mysql");
-  
+
 const dbConn = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -31,7 +31,7 @@ dbConn.connect(function(err) {
     if (err) throw err;
     console.log("Database Connected!");
   });
-  
+
   module.exports = dbConn;
 
   //typeCast: function castField( field, useDefaultTypeCasting ) {

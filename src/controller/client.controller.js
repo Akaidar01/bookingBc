@@ -13,7 +13,7 @@ exports.findAll = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    const new_employee = new Employee(req.body);
+    const new_employee = new Client(req.body);
    console.log('#test', )
     if(typeof req.body.constructor === 'object' && Object.keys(req.body).length === 0){
         return res.status(400).send({ error:true, message: 'Please provide all required field' });
@@ -42,7 +42,7 @@ exports.update = function(req, res) {
     
     }else{
        
-        Client.update(req.params.id, new Employee(req.body), function(err, employee) {
+        Client.update(req.params.id, new Client(req.body), function(err, employee) {
             if (err)
              res.send(err);
               res.json({ error:false, message: 'Base successfully updated' });

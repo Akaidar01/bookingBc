@@ -16,6 +16,7 @@ var Office = function (Offices) {
   this.room        = Offices.room;
   this.bc_name     = Offices.bc_name;
 };
+
 Office.create = function (newEmp, result) {
  dbConn.query("INSERT INTO Offices set ?", newEmp, function (err, res) {
   if(err) {
@@ -75,6 +76,19 @@ Office.delete = function(id, result){
 }
  else{
   result(null, res);
+}
+});
+};
+
+Office.filter = function (filter, result) {
+  dbConn.query("Select * from Offices WHERE DateFrom >= ? AND DateTo <= ? AND IsActive = 1", [filter],function (err, res) {
+   if(err) {
+    console.log("error: ", err);
+      result(null, err);
+}
+else{
+  console.log('Offices : ', res);
+    result(null, res);
 }
 });
 };

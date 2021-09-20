@@ -4,6 +4,8 @@ const router = express.Router()
 
 const office = require('../../controller/office.controller');
 
+    router.get('/filter', office.filter);
+
     router.get('/', office.findAll);
 
     router.post('/', office.create);
@@ -13,5 +15,7 @@ const office = require('../../controller/office.controller');
     router.put('/:id', office.update);
 
     router.delete('/:id', office.delete);
+
+    
 
 module.exports = router

@@ -8,19 +8,20 @@ var Building = function (buildings) {
   this.adress      = buildings.adress;
   this.contacts    = buildings.contacts;
 };
-Building.create = function (newEmp, result) {
- dbConn.query("INSERT INTO buildings set ?", newEmp, function (err, res) {
-  if(err) {
-   console.log("error: ", err);
-    result(err, null);
-}
- else{
-  console.log(res.insertId);
-   result(null, res.insertId);
-}
-});
-};
 
+Building.create = function (newEmp, result) {
+  dbConn.query("INSERT INTO buildings set ?", newEmp, function (err, res) {
+   if(err) {
+    console.log("error: ", err);
+     result(err, null);
+ }
+  else{
+   console.log(res);
+    result(null, res);
+ }
+ });
+ };
+ 
 Building.findById = function (id, result) {
  dbConn.query("Select * from buildings where id = ? ", id, function (err, res) {
   if(err) {

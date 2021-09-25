@@ -2,19 +2,19 @@ const express = require('express')
 
 const router = express.Router()
 
-const office = require('../../controller/office.controller');
+const Office = require('../../controller/office.controller');
 
-    router.get('/filter', office.filter);
+    router.get('/filter', Office.filter);
 
-    router.get('/', office.findAll);
+    router.get('/', Office.findAll);
 
-    router.post('/', office.create);
+    router.post('/', Office.create);
 
-    router.get('/:id', office.findById);
+    router.get('/:id', Office.findById);
 
-    router.put('/:id', office.update);
+    router.put('/:id', Office.update);
 
-    router.delete('/:id', office.delete);
+    router.delete('/:id*?', Office.delete);
 
     
 

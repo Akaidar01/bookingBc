@@ -8,17 +8,17 @@ var OfficeFilter = function (filterOff) {
     this.DateTo = new Date(filterOff.DateTo);
   };
 
-
-  OfficeFilter.filter = function(filter, result) {
-    dbConn.query("Select * from Offices", [filter.DateFrom, filter.DateTo], function (err, res) {
+   OfficeFilter.filter = function(filter, result) {
+      dbConn.query("Select * from Offices", 
+          [filter.DateFrom, filter.DateTo], function (err, res) {
             if(err) {
              console.log("error: ", err);
                result(null, err);
-         }
-         else{
-           console.log('Offices : ', res);
+            }
+           else{
+              console.log('Offices : ', res);
              result(null, res);
-         }
+           }
         });
     };
 

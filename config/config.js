@@ -1,4 +1,3 @@
-'use strict';
 
 const mysql = require("mysql");
 
@@ -7,6 +6,7 @@ const dbConn = mysql.createConnection({
   user: "root",
   password: "",
   database: "Baze",
+
   typeCast: function castField( field, useDefaultTypeCasting ) {
 
     if ( ( field.type === "BIT" ) && ( field.length === 1 ) ) {

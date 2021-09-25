@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
   res.send("Baze");
 });
 
+app.use(express.json());
 
 const clientRoutes = require('./src/routes/Api/clients')
 
@@ -34,6 +35,7 @@ const buildingRoutes = require('./src/routes/Api/buildings')
 
 app.use('/building', buildingRoutes)
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+app.listen(port, function(err){
+  if (err) console.log(err);
+  console.log("Server listening on PORT", port);
 });

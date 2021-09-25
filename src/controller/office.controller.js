@@ -2,7 +2,7 @@
 
 const office = require('../model/office.model');
 const officeFilter = require('../model/office.filter.model');
-const { get } = require('../routes/Api/buildings');
+//const { get } = require('../routes/Api/buildings');
 
 exports.findAll = function(req, res) {
     office.findAll(function(err, office) {
@@ -15,23 +15,18 @@ exports.findAll = function(req, res) {
   });
 };
 
-
-
 exports.create = function(req, res) {
     const new_office = new office(req.body);
-   console.log('#test', )
-    if(typeof req.body.constructor === 'object' && Object.keys(req.body).length === 0){
-        return res.status(400).send({ error:true, message: 'Please provide all required field' });
-    
+    if(req.body.constructor === Object && Object.keys(req.body).length === 0){
+      res.status(400).send({ error:true, message: 'Please provide all required field' });
     }else{
-        office.create(new_office, function(err, office) {
-         if (err)
-          res.send(err);
-          console.log(office)
-             res.json({error:false,message:"Base added successfully!",data:office});
-        });
+    office.create(new_office, function(err, office) {
+      if (err)
+      res.send(err);
+      res.json({error:false,message:"office added successfully!",data:office});
+    });
     }
-};
+    };
 
 exports.findById = function(req, res) {
     office.findById(req.params.id, function(err, office) {
@@ -41,6 +36,7 @@ exports.findById = function(req, res) {
           res.json(office);
     });
 };
+
 exports.update = function(req, res) {
     
     if(typeof req.body.constructor === object && Object.keys(req.body).length === 0){
@@ -58,6 +54,7 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
+    console.log(req.params);
     office.delete( req.params.id, function(err, office) {
     if (err)
      res.send(err);
@@ -65,13 +62,10 @@ exports.delete = function(req, res) {
   });
 };
 
-
 exports.filter = function(req, res) {
     officeFilter.filter(req.query,function(err, office) {
-    
        if (err)
         res.send(err);
-        
         let count = 0;
         if(office && office !== null){
             office.forEach(element => 
